@@ -22,6 +22,11 @@ const Comments = () => {
 
   return (
     <div>
+        <div className="flex text-white pt-6 justify-around px-48">
+            <p>Reviews ({feedback.length})</p>
+            <p>Rating:</p>
+        </div>
+        
         {feedback.map( (comment) => (
        <Comment key={comment.id} comment={comment}/>
       ))}
