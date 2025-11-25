@@ -1,0 +1,6 @@
+[
+    {"id": 1, "rating": 7, "text": "This is comment one"},
+    {"id": 2, "rating": 9, "text": "This is comment two"},
+    {"id": 3, "rating": 5, "text": "This is comment three"},
+    {"id": 4, "rating": 10, "text": "This is comment four"}
+]
