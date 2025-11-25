@@ -1,30 +1,22 @@
 import Comment from "./Comment";
 import { useState, useEffect } from "react";
+import { feedbackContext } from "../context/feedbackContext";
+import { useContext } from "react";
 
 const Comments = () => {
 
-    const [feedback, setFeedback] = useState([]);
+  const { feedback,setFeedback }  = useContext(feedbackContext);
 
-  useEffect(() => {
-  const getFeedback = async () => {
-    try {
-      const res = await fetch("/feedback.json");
-      const data = await res.json();
-      setFeedback(data);
-    } catch (error) {
-      console.error("Error fetching data", error);
-    }
-    
-  };
+  //calculating the rating average
+  const totalRating = feedback.reduce((acc, curr) => acc + curr.rating, 0);
+  const averageRating = feedback.length > 0 ? (totalRating / feedback.length).toFixed(1) : 0;
 
-  getFeedback();
-}, []);
 
   return (
     <div>
         <div className="flex text-white pt-6 justify-around px-48">
             <p>Reviews ({feedback.length})</p>
-            <p>Rating:</p>
+            <p>Rating: {averageRating}</p>
         </div>
         
         {feedback.map( (comment) => (
